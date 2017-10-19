@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>account</artifactId>
+        <groupId>com.shankes.account</groupId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>account-email</artifactId>
+
+    <!-- 版本号定义 -->
+    <properties>
+        <springframework.version>4.3.10.RELEASE</springframework.version>
+        <mail.version>1.4</mail.version>
+        <junit.version>4.9</junit.version>
+        <icegreen.version>1.5.5</icegreen.version>
+        <java.version>1.6</java.version>
+        <!-- 统一源代码的编码方式：UTF-8 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- mail，实现发送必须的类库 -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${mail.version}</version>
+        </dependency>
+        <!-- GreenMail是开元的邮件服务测试套件 -->
+        <dependency>
+            <groupId>com.icegreen</groupId>
+            <artifactId>greenmail</artifactId>
+            <version>${icegreen.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+</project>

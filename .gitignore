@@ -1,0 +1,16 @@
+# Created by .ignore support plugin (hsz.mobi)
+# 提交到git仓库时，忽略不需要提交的文件 #
+
+# Maven #
+target/
+
+# IDEA #
+.idea
+*.iml
+
+# Eclipse #
+.settings/
+.metadata/
+.classpath
+.project
+Servers/
