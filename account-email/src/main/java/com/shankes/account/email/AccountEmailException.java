@@ -30,8 +30,10 @@ public class AccountEmailException extends Exception {
 
     public synchronized boolean setNextException(Exception ex) {
         Object theEnd;
-        for (theEnd = this; theEnd instanceof AccountEmailException && ((AccountEmailException) theEnd).next != null; theEnd = ((AccountEmailException) theEnd).next) {
-            ;
+        for (theEnd = this;
+             theEnd instanceof AccountEmailException && ((AccountEmailException) theEnd).next != null;
+             theEnd = ((AccountEmailException) theEnd).next) {
+
         }
 
         if (theEnd instanceof AccountEmailException) {

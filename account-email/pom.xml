@@ -13,16 +13,37 @@
 
     <!-- 版本号定义 -->
     <properties>
-        <springframework.version>4.3.10.RELEASE</springframework.version>
         <mail.version>1.4</mail.version>
-        <junit.version>4.9</junit.version>
         <icegreen.version>1.5.5</icegreen.version>
-        <java.version>1.6</java.version>
-        <!-- 统一源代码的编码方式：UTF-8 -->
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
+    <dependencies><!-- Spring Framework实现依赖注入等功能必要的构件 -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+        </dependency>
+        <!-- SLF4J,使用Log4J作为实现 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
         <!-- mail，实现发送必须的类库 -->
         <dependency>
             <groupId>javax.mail</groupId>
@@ -37,4 +58,14 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 开启Java的支持 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 </project>
