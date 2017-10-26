@@ -9,13 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>account-email</artifactId>
-    <name>Account Email</name>
+    <artifactId>account-captcha</artifactId>
+    <name>Account Captcha</name>
 
-    <!-- 版本号定义 -->
     <properties>
-        <mail.version>1.4</mail.version>
-        <icegreen.version>1.5.5</icegreen.version>
+        <kaptcha.version>2.3</kaptcha.version>
     </properties>
 
     <dependencies>
@@ -36,30 +34,35 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-context-support</artifactId>
         </dependency>
-        <!-- SLF4J,使用Log4J作为实现 -->
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-        </dependency>
         <!-- junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <!-- mail，实现发送必须的类库 -->
+        <!-- google生成验证码的一个工具类
+             其原理是将随机生成字符串保存到session中
+             同时以图片的形式返回给页面
+             后前台页面提交到后台进行对比
+             2.3.2版本下载失败，自行上传到私服
+             2.3版本的来自http://repository.sonatype.org/content/groups/forge/-->
         <dependency>
-            <groupId>javax.mail</groupId>
-            <artifactId>mail</artifactId>
-            <version>${mail.version}</version>
+            <groupId>com.google.code.kaptcha</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${kaptcha.version}</version>
+            <classifier>jdk15</classifier>
         </dependency>
-        <!-- GreenMail是开元的邮件服务测试套件 -->
-        <dependency>
-            <groupId>com.icegreen</groupId>
-            <artifactId>greenmail</artifactId>
-            <version>${icegreen.version}</version>
-            <scope>test</scope>
-        </dependency>
+        <!-- Aliyun生成验证码的一个工具类
+             其原理是将随机生成字符串保存到session中
+             同时以图片的形式返回给页面
+             后前台页面提交到后台进行对比
+             2.3.2版本来自http://maven.aliyun.com/nexus/content/groups/public/-->
+        <!--<dependency>
+            <groupId>com.github.penggle</groupId>
+            <artifactId>kaptcha</artifactId>
+            <version>${kaptcha.version}</version>
+        </dependency>-->
     </dependencies>
+
 
     <build>
         <plugins>

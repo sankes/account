@@ -13,6 +13,7 @@
         <module>account-email</module>
         <module>account-persist</module>
         <module>util</module>
+        <module>account-captcha</module>
     </modules>
 
     <!-- 此处id必须和项目setting.xml中配置的server中id相同，否则无法上传构件到私服 -->
@@ -91,5 +92,4 @@
             </plugins>
         </pluginManagement>
     </build>
-
 </project>
