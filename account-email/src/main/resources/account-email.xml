@@ -13,7 +13,7 @@
         <property name="protocol" value="${email.protocol}"/>
         <property name="host" value="${email.host}"/>
         <property name="port" value="${email.port}"/>
-        <property name="username" value="${email.username}"/>
+        <property name="username" value="${email.name}"/>
         <property name="password" value="${email.password}"/>
         <property name="javaMailProperties">
             <props>

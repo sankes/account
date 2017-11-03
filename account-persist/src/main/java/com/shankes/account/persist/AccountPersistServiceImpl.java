@@ -60,18 +60,22 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     }
 
     @Override
-    public Account createAccount(Account account) throws Exception {
+    public Account createAccount(Account account) throws AccountPersistException {
         return null;
     }
 
     @Override
-    public Account readAccount(String id) throws Exception {
-        Document doc = readDocument();
-        Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
-        for (Element accountEle : (List<Element>) accountsEle.elements()) {
-            if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)) {
-                return buildAccount(accountEle);
+    public Account readAccount(String id) throws AccountPersistException {
+        try {
+            Document doc = readDocument();
+            Element accountsEle = doc.getRootElement().element(ELEMENT_ACCOUNTS);
+            for (Element accountEle : (List<Element>) accountsEle.elements()) {
+                if (accountEle.elementText(ELEMENT_ACCOUNT_ID).equals(id)) {
+                    return buildAccount(accountEle);
+                }
             }
+        } catch (Exception e) {
+            throw new AccountPersistException("Unable to read document", e);
         }
         return null;
     }
@@ -88,13 +92,13 @@ public class AccountPersistServiceImpl implements AccountPersistService {
     }
 
     @Override
-    public Account updateAccount(Account account) throws Exception {
+    public Account updateAccount(Account account) throws AccountPersistException {
 
         return null;
     }
 
     @Override
-    public void deleteAccount(String id) throws Exception {
+    public void deleteAccount(String id) throws AccountPersistException {
 
     }
 }

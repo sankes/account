@@ -15,7 +15,6 @@
     <!-- 版本号定义 -->
     <properties>
         <mail.version>1.4</mail.version>
-        <icegreen.version>1.5.5</icegreen.version>
     </properties>
 
     <dependencies>
@@ -56,8 +55,6 @@
         <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail</artifactId>
-            <version>${icegreen.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
