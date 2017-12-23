@@ -10,7 +10,7 @@
         <groupId>com.shankes.account</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
-    
+
     <artifactId>account-persist</artifactId>
     <name>Account Persist</name>
 
@@ -34,6 +34,24 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>${dom4j.version}</version>
+        </dependency>
+        <!-- Apache Commons DbUtils 提供JDBC封装 -->
+        <!-- https://mvnrepository.com/artifact/commons-dbutils/commons-dbutils -->
+        <dependency>
+            <groupId>commons-dbutils</groupId>
+            <artifactId>commons-dbutils</artifactId>
+            <version>1.6</version>
+        </dependency>
+        <!-- Apache DBCP    数据库连接池 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>2.1.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.shankes.account</groupId>
+            <artifactId>util</artifactId>
+            <version>1.0.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

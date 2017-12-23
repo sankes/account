@@ -6,6 +6,7 @@
 
     <!-- 版本号定义 -->
     <properties>
+        <tomcat.directory>H:\apache-tomcat-7.0.70</tomcat.directory>
         <project.version>1.0.0-SNAPSHOT</project.version>
         <nexus.ip>http://127.0.0.1:8081/nexus/content/</nexus.ip>
         <!-- nexus url -->

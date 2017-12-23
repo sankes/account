@@ -1,5 +1,7 @@
-package com.shankes.account.util;
+package com.shankes.account.persist.helper;
 
+import com.shankes.account.util.CollectionUtil;
+import com.shankes.account.util.PropsUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;

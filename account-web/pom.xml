@@ -15,6 +15,10 @@
 
     <properties>
         <jetty.version>8.1.16.v20140903</jetty.version>
+        <cargo.version>1.6.5</cargo.version>
+        <javax.servlet-api>3.1.0</javax.servlet-api>
+        <jsp-api>2.2</jsp-api>
+        <jstl>1.2</jstl>
     </properties>
 
     <dependencies>
@@ -35,12 +39,37 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
         </dependency>
+        <!-- Servlet,只参与编译，无需参与打包（Tomcat自带了Servlet与JSP所对应的jar包，scope设置为provided） -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${javax.servlet-api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSP -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${jsp-api}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- JSTL,只在运行时需要，无需参与编译，scope设置为runtime -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>${jstl}</version>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
             <!--
+            热部署
             使用mvn jetty:run命令
+            mvn jetty:run -Djetty.port=8083
+            mvn jetty:run -Djetty.port=10086 -pl app-loupan
+            stop jetty:ctrl + c
             需要settings.xml中配置
             <settings>
                 <pluginGroups>
@@ -59,14 +88,85 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>${jetty.version}</version>
                 <configuration>
-                    <stopKey></stopKey>
-                    <stopPort></stopPort>
+                    <contextPath>/</contextPath>
+                    <connectors>
+                        <connector implementation="org.mortbay.jetty.nio.SelectChannelConnector">
+                            <port>80</port> <!-- 访问端口,默认8080 -->
+                        </connector>
+                    </connectors>
+                    <reload>automatic</reload>
+                    <!-- 配置的停止jetty服务 -->
+                    <stopKey>shutdown</stopKey>
+                    <stopPort>9998</stopPort>
+                    <!-- 自动扫描时间参数，此处设置为3秒，为0表示 不自动扫描 -->
                     <scanIntervalSeconds>10</scanIntervalSeconds>
+                    <webAppSourceDirectory>src/main/webapp</webAppSourceDirectory>
+                    <!-- 工程的虚拟目录名 -->
                     <webAppConfig>
                         <contextPath>/test</contextPath>
                     </webAppConfig>
                 </configuration>
             </plugin>
+            <!--
+            自动化部署
+            mvn cargo:start
+            需要settings.xml中配置
+            <settings>
+                <pluginGroups>
+                    <pluginGroup>org.codehaus.cargo</pluginGroup>
+                </pluginGroups>
+                ...
+            </settings>
+            -->
+            <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo.version}</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat7x</containerId>
+                        <home>${tomcat.directory}</home>
+                        <log>${project.build.directory}/cargo.log</log>
+                        <output>${project.build.directory}/output.log</output>
+                    </container>
+                    <configuration>
+                        <!--
+                        standalone部署到target/tomcat7x
+                        existing部署到tomcat中，home改成H:\apache-tomcat-7.0.70
+                         -->
+                        <!--<type>existing</type>
+                        <home>${project.build.directory}/tomcat7x</home>-->
+                        <type>standalone</type>
+                        <home>${project.build.directory}/tomcat7x</home>
+                        <properties>
+                            <cargo.servlet.port>8083</cargo.servlet.port>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>
+            <!--
+            cargo远程部署
+            http://cargo.codehaus.org/Maven2+plugin
+            -->
+            <!--<plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>${cargo.version}</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat7x</containerId>
+                        <type>remote</type>
+                    </container>
+                    <configuration>
+                        <type>runtime</type>
+                        <properties>
+                            <cargo.remote.username>admin</cargo.remote.username>
+                            <cargo.remote.password>admin123</cargo.remote.password>
+                            <cargo.tomcat.manager.url>http://localhost:8080/manager</cargo.tomcat.manager.url>
+                        </properties>
+                    </configuration>
+                </configuration>
+            </plugin>-->
         </plugins>
     </build>
 </project>
