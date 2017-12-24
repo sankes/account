@@ -1,0 +1,35 @@
+<!-- Spring 字符编码过滤器 -->
+<!--    作用相当于Servlet中的：
+            request.setCharacterEncoding("UTF-8");
+            response.setCharacterEncoding("UTF-8");
+        Spring自带的字符编码过滤器主要针对“POST”请求，对“GET”请求无效
+        以往对于GET请求的参数乱码
+            方法1：是采用数据还原（以往方法）：
+                String userName= request.getParameter("userName");
+                userName=new String(userName.getBytes("iso8859-1"),"UTF-8");
+
+            方法2：Tomcat字符编码配置
+                打开conf目录下的server.xml，在70行，修改之前代码如下：
+                <Connector port="8080" protocol="HTTP/1.1"
+                       connectionTimeout="20000"
+                       redirectPort="8443"
+                       URIEncoding="UTF-8"
+                       useBodyEncodingForURI="true"  />
+ -->
+<filter>
+    <description>字符集过滤器</description>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>
+        org.springframework.web.filter.CharacterEncodingFilter
+    </filter-class>
+    <init-param>
+        <description>字符集编码</description>
+        <param-name>encoding</param-name>
+        <param-value>UTF-8</param-value>
+    </init-param>
+    <!-- forceEncoding用于设置response的字符集是否也设置成encoding所指定的字符集 -->
+    <init-param>
+        <param-name>forceEncoding</param-name>
+        <param-value>true</param-value>
+    </init-param>
+</filter>

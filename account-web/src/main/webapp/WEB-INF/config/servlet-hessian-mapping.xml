@@ -1,0 +1,10 @@
+<!-- 配置监听hessian远程访问，即对外暴露Hessian接口 -->
+<servlet-mapping>
+    <servlet-name>hessian</servlet-name>
+    <!-- 表示哪些请求交给Spring Web MVC处理，
+     “/” 是用来定义默认servlet映射的。
+     也可以如“*.html”表示拦截所有以html为扩展名的请求
+      可以同时配置多个url-pattern-->
+    <!--<url-pattern>/hessian/*</url-pattern>-->
+    <url-pattern>*.hessian</url-pattern>
+</servlet-mapping>

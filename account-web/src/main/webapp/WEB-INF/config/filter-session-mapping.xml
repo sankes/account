@@ -1,0 +1,4 @@
+<filter-mapping>
+    <filter-name>SessionFilter</filter-name>
+    <url-pattern>/admin/*</url-pattern>
+</filter-mapping>

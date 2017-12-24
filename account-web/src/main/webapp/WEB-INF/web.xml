@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- web.xml拆分
+        之前在用xml可以做成配置属性的，可以导入文件的形式，管理xml拆分等。
+        首先需要把Tomcat中context.xml中的xmlBlockExternal属性改为false。
+-->
+<!DOCTYPE web-app
+        [
+                <!ENTITY filter-encoding-define SYSTEM "config/filter-encoding-define.xml">
+                <!ENTITY filter-encoding-mapping SYSTEM "config/filter-encoding-mapping.xml">
+
+                <!ENTITY filter-session-define SYSTEM "config/filter-session-define.xml">
+                <!ENTITY filter-session-mapping SYSTEM "config/filter-session-mapping.xml">
+
+                <!ENTITY filter-rest-define SYSTEM "config/filter-rest-define.xml">
+                <!ENTITY filter-rest-mapping SYSTEM "config/filter-rest-mapping.xml">
+
+                <!ENTITY servlet-springmvc-define SYSTEM "config/servlet-spring-mvc-define.xml">
+                <!ENTITY servlet-springmvc-mapping SYSTEM "config/servlet-spring-mvc-mapping.xml">
+
+                <!ENTITY servlet-hessian-define SYSTEM "config/servlet-hessian-define.xml">
+                <!ENTITY servlet-hessian-mapping SYSTEM "config/servlet-hessian-mapping.xml">
+
+                <!ENTITY listener-default SYSTEM "config/listener-default.xml">
+                <!ENTITY listener-start SYSTEM "config/listener-start.xml">
+                ]>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xmlns="http://java.sun.com/xml/ns/javaee"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
          id="WebApp_ID" version="3.0">
+
     <display-name>Sample Maven Project:Account Service</display-name>
-    <listener>
-        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-    </listener>
+
     <context-param>
         <param-name>contextConfigLocation</param-name>
         <param-value>
@@ -16,53 +39,10 @@
             classpath:/account-email.xml
             classpath:/account-service.xml
             classpath:/account-web.xml
-            classpath:hessian_ctx.xml
+            classpath:/spring-mvc-servlet.xml
+            classpath:/hessian_ctx.xml
         </param-value>
     </context-param>
-
-    <servlet>
-        <servlet-name>CaptchaImageServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.http.CaptchaImageServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SignUpServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.http.SignUpServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ActivateServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.http.ActivateServlet</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.http.LoginServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>CaptchaImageServlet</servlet-name>
-        <url-pattern>/CaptchaImageServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SignUpServlet</servlet-name>
-        <url-pattern>/SignUpServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ActivateServlet</servlet-name>
-        <url-pattern>/ActivateServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-
-    <!-- 配置Spring监听hessian远程访问，即对外暴露Hessian接口 -->
-    <servlet>
-        <servlet-name>hessian</servlet-name>
-        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-        <load-on-startup>4</load-on-startup>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>hessian</servlet-name>
-        <url-pattern>/hessian/*</url-pattern>
-    </servlet-mapping>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

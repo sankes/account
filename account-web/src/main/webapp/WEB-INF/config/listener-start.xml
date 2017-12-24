@@ -1,0 +1,4 @@
+<!-- 平台启动监听 -->
+<listener>
+    <listener-class>com.shankes.account.web.listener.OnStartListener</listener-class>
+</listener>

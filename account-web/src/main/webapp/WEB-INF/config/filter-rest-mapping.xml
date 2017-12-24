@@ -1,0 +1,5 @@
+<!-- configure the HiddenHttpMethodFilter,convert the post method to put or delete -->
+<filter-mapping>
+    <filter-name>HiddenHttpMethodFilter</filter-name>
+    <url-pattern>/rest/*</url-pattern>
+</filter-mapping>

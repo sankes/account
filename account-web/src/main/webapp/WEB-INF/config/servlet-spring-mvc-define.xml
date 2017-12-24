@@ -1,0 +1,19 @@
+<!-- 匹配顺序
+     1.精确匹配
+     2.路径匹配,先最长路径匹配，再最短路径匹配
+        “/*”属于路径匹配，并且可以匹配所有request，由于路径匹配的优先级仅次于精确匹配，
+        “/*”会覆盖所有的扩展名匹配，很多404错误均由此引起
+     3.扩展名匹配
+     4.缺省匹配
+      -->
+<!-- 配置SpringMVC -->
+<!--configure the setting of springmvcDispatcherServlet and configure the mapping-->
+<servlet>
+    <servlet-name>SpringMVC</servlet-name>
+    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <init-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:springmvc-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+</servlet>
