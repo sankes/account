@@ -1,4 +1,4 @@
-package com.shankes.account.web;
+package com.shankes.account.web.http;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +15,7 @@ import java.io.IOException;
         urlPatterns = {"/hello.view"},// urlPatterns={"/getUser","/userInfo"}
         loadOnStartup = 1 // 设置大于0的值(默认值为-1),较小数字的Servlet先初始化
 )*/
+@WebServlet("/Activate.action")
 public class ActivateServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

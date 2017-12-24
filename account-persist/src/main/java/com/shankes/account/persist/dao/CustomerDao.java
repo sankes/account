@@ -1,9 +1,10 @@
-package com.shankes.account.persist.demo.service;
+package com.shankes.account.persist.dao;
 
-import com.shankes.helper.DatabaseHelper;
-import com.shankes.model.Customer;
+import com.shankes.account.persist.demo.bean.Customer;
+import com.shankes.account.persist.helper.DatabaseHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Map;
@@ -11,9 +12,10 @@ import java.util.Map;
 /**
  * 提供客户数据服务
  */
-public class CustomerService {
+@Repository
+public class CustomerDao {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerService.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerDao.class);
 
     /**
      * 获取客户列表

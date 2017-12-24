@@ -2,16 +2,19 @@ package com.shankes.account.email;
 
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+@Service
 public class AccountEmailServiceImpl implements AccountEmailService {
 
     private JavaMailSender javaMailSender;
 
     private String systemEmail;
 
+    @Override
     public void sendMail(String to, String subject, String htmlText) throws AccountEmailException {
         try {
             MimeMessage msg = javaMailSender.createMimeMessage();

@@ -3,6 +3,7 @@ package com.shankes.account.captcha;
 import com.google.code.kaptcha.impl.DefaultKaptcha;
 import com.google.code.kaptcha.util.Config;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Service;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -10,6 +11,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.*;
 
+@Service
 public class AccountCaptchaServiceImpl implements AccountCaptchaService, InitializingBean {
 
     private DefaultKaptcha producer;

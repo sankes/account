@@ -8,10 +8,12 @@ import com.shankes.account.email.AccountEmailService;
 import com.shankes.account.persist.Account;
 import com.shankes.account.persist.AccountPersistException;
 import com.shankes.account.persist.AccountPersistService;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.Map;
 
+@Service
 public class AccountServiceImpl implements AccountService {
 
     private Map<String, String> activationMap = new HashMap<String, String>();

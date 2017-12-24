@@ -15,23 +15,26 @@
             classpath:/account-captcha.xml
             classpath:/account-email.xml
             classpath:/account-service.xml
+            classpath:/account-web.xml
+            classpath:hessian_ctx.xml
         </param-value>
     </context-param>
+
     <servlet>
         <servlet-name>CaptchaImageServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.CaptchaImageServlet</servlet-class>
+        <servlet-class>com.shankes.account.web.http.CaptchaImageServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SignUpServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.SignUpServlet</servlet-class>
+        <servlet-class>com.shankes.account.web.http.SignUpServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ActivateServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.ActivateServlet</servlet-class>
+        <servlet-class>com.shankes.account.web.http.ActivateServlet</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>com.shankes.account.web.LoginServlet</servlet-class>
+        <servlet-class>com.shankes.account.web.http.LoginServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CaptchaImageServlet</servlet-name>
@@ -48,6 +51,17 @@
     <servlet-mapping>
         <servlet-name>LoginServlet</servlet-name>
         <url-pattern>/LoginServlet</url-pattern>
+    </servlet-mapping>
+
+    <!-- 配置Spring监听hessian远程访问，即对外暴露Hessian接口 -->
+    <servlet>
+        <servlet-name>hessian</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <load-on-startup>4</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>hessian</servlet-name>
+        <url-pattern>/hessian/*</url-pattern>
     </servlet-mapping>
 
     <welcome-file-list>

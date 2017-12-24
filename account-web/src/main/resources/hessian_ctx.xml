@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+<context:component-scan base-package="com.shankes.account.web.hessian"/>
+
+
+    <!-- 以Hessian方式向外暴露的接口 -->
+
+   <!-- <bean name="/loginBusiness"    //name这个值是在调用时用到
+    class="org.springframework.remoting.caucho.HessianServiceExporter">
+    <property name="service" ref="loginBusiness" />//ref这个值是通过注解后纳入容器的bean的一个ID
+    <property name="serviceInterface"
+              value="com.gstd.service.business.ILoginBusiness" />//value这个值是实现ref对应的实现类的接口地址
+</bean>-->
+
+
+
+        <!-- 系统用户接口 -->
+   <!-- <bean id="loginBusiness" class="org.springframework.remoting.caucho.HessianProxyFactoryBean">
+        <property name="serviceUrl">
+            <value>
+                <span>
+                    <span class="string">http://localhost:8080/hessian/loginBusiness</span>
+                </span>
+            </value>
+        </property>
+        <property name="serviceInterface">
+            <value>com.gstd.service.business.ILoginBusiness</value>//客户端接口地址
+        </property>
+        &lt;!&ndash; 解决协议冲突 &ndash;&gt;
+        <property name="overloadEnabled" value="true"></property>
+    </bean>-->
+
+</beans>

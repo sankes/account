@@ -19,6 +19,8 @@
         <javax.servlet-api>3.1.0</javax.servlet-api>
         <jsp-api>2.2</jsp-api>
         <jstl>1.2</jstl>
+        <sptsm-unicom-tsm.version>1.0.0</sptsm-unicom-tsm.version>
+        <hessian.version>4.0.51</hessian.version>
     </properties>
 
     <dependencies>
@@ -59,6 +61,18 @@
             <artifactId>jstl</artifactId>
             <version>${jstl}</version>
             <scope>runtime</scope>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.caucho/hessian -->
+        <dependency>
+            <groupId>com.sptsm.unicom.tsm.hessian</groupId>
+            <artifactId>sptsm-unicom-tsm</artifactId>
+            <version>${sptsm-unicom-tsm.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.caucho</groupId>
+            <artifactId>hessian</artifactId>
+            <version>${hessian.version}</version>
         </dependency>
     </dependencies>
 
