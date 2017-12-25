@@ -44,7 +44,6 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
         </dependency>
         <!-- Servlet,只参与编译，无需参与打包（Tomcat自带了Servlet与JSP所对应的jar包，scope设置为provided） -->
         <dependency>
